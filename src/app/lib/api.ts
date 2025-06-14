@@ -3,12 +3,9 @@ import { ApiResponse, SearchParams } from "./types";
 export async function fetchCars(params: SearchParams): Promise<ApiResponse> {
   const { _page = "1", _sort, _order } = params;
 
-  const baseUrl =
-    typeof window !== "undefined"
-      ? window.location.origin
-      : process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
-
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
   const url = new URL(`${baseUrl}/api/cars`);
+
   url.searchParams.set("_limit", "12");
   url.searchParams.set("_page", _page);
 

@@ -7,9 +7,9 @@ import { SearchParams } from "./lib/types";
 export default async function Home({
   searchParams,
 }: {
-  searchParams: SearchParams;
+  searchParams: Promise<SearchParams>;
 }) {
-  const { _page = "1", _sort, _order } = searchParams;
+  const { _page = "1", _sort, _order } = await searchParams;
   const page = parseInt(_page as string) || 1;
 
   const { data: cars, meta } = await fetchCars({

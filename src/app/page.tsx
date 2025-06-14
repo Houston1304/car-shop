@@ -12,6 +12,8 @@ export default async function Home({
   const { _page = "1", _sort, _order } = await searchParams;
   const page = parseInt(_page as string) || 1;
 
+  console.log("Base URL:", process.env.NEXT_PUBLIC_SITE_URL);
+
   const { data: cars, meta } = await fetchCars({
     _page: page.toString(),
     _sort,
